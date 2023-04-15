@@ -1,6 +1,9 @@
-.paintings {
+.painting {
     width: 300px;
     margin: 30px;
+}
+
+.paintings {
     justify-content: center;
     text-align: center;
 }

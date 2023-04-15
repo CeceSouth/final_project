@@ -50,18 +50,22 @@ function App() {
   return (
     <div className="App">
       <p>Gallery</p>
-      <img className="paintings"
-        src={paintings.primaryImage}
-        alt={paintings.title}
-      />
-            <img className="paintings"
-        src={paintings.primaryImage}
-        alt={paintings.title}
-      />
-            <img className="paintings"
-        src={paintings.primaryImage}
-        alt={paintings.title}
-      />
+
+      <div className="paintings">
+        <img className="painting"
+          src={paintings.primaryImage}
+          alt={paintings.title}
+        />
+              <img className="painting"
+          src={paintings.primaryImage}
+          alt={paintings.title}
+        />
+              <img className="painting"
+          src={paintings.primaryImage}
+          alt={paintings.title}
+        />
+
+      </div>
     </div>
   );
 }
