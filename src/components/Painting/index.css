@@ -1,0 +1,13 @@
+.painting {
+    width: 300px;
+    margin: 30px;
+}
+
+/* .button{
+    opacity: 0;
+    transition: opacity .35s ease;
+} */
+
+/* .painting:hover .button{
+    opacity: 1;
+} */
