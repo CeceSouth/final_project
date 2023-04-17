@@ -3,11 +3,14 @@ import Painting from '../Painting';
 import './index.css';
 
 
+
+
 function Gallery() {
   const [paintingIDs, setPaintingIDs] = useState()
   const [loadMore, setLoadMore] = useState(0)
   const [displayPaintingIDs, setDisplayPaintingIDs] = useState()
   const [viewPaintings, setViewPaintings] = useState()
+  const [like, setLike] = useState(false)
   
   useEffect(() => {
     // Get paintingIDs from API
@@ -50,14 +53,17 @@ function Gallery() {
           Object.keys(viewPaintings).map((painting) => {
             return(<Painting 
               key = {painting}
-              primaryImage = {viewPaintings[painting].primaryImage}
-              title = {viewPaintings[painting].title}
+              paintingID = {painting}
+              painting = {viewPaintings[painting]}
+              like = {like}
+              setLike = {setLike}
             />)
           })
 
         }
       </div>
     </div>
+    
   );
 }
 
