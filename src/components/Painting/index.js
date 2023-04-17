@@ -15,10 +15,10 @@ function Painting(props) {
 
                             />  
 
-                            <div >
+                            {/* <div > */}
                                 <Heart className="heartButton" isActive={props.like} onClick={() => props.setLike(!props.like)}/>
                                 <Link state={props.painting} className="linkButton" to={props.paintingID}>Details</Link>
-                            </div>
+                            {/* </div> */}
                         
 
                     </div>

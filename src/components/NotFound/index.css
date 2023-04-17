@@ -5,3 +5,10 @@ h1{
     justify-content: center;
     margin-top: 150px;
 }
+.BackButton{
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+    display: flex;
+    position: relative;
+}
