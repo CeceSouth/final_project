@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
 import "./index.css"
 function NotFound (){
-    return(
+    return(<>
         <h1>Opps, the page doesn't esit</h1>
+        <Link className="BackButton" to="/gallery">Visit Gallery</Link>
+        </>
     )
 
 }
