@@ -8,26 +8,24 @@ function Painting(props) {
     return(
             <>
                 {props.painting.primaryImage &&
-                    <div>
+                    <>
                             <img className="painting"
                             src={props.painting.primaryImage}
 
                             />  
 
-                            
-                                <Heart className="heartButton" isActive={props.like} onClick={() => 
+
+                            <div className="paintingButton">
+                            <Heart className="heartButton" isActive={props.like} onClick={() => 
                                     props.setLike((prevState) => ({...prevState, [props.painting.objectID]: !props.like}))}/>
 
                                 <Link state={props.painting} className="linkButton" to={props.paintingID}>Details</Link>
-                            
-                        
+                            </div>
+                                
+                    </>
 
-                    {/* </div> */}
-                    </div>
 
                 } 
-                
-
 
             </>
 
