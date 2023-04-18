@@ -14,6 +14,7 @@ function Painting(props) {
 
                             />  
 
+
                             <div className="paintingButton">
                             <Heart className="heartButton" isActive={props.like} onClick={() => 
                                     props.setLike((prevState) => ({...prevState, [props.painting.objectID]: !props.like}))}/>
@@ -22,6 +23,7 @@ function Painting(props) {
                             </div>
                                 
                     </>
+
 
                 } 
 
