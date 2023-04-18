@@ -1,4 +1,9 @@
+*{
+    margin-bottom: 30px;
+}
+
 .paintings {
     justify-content: center;
     text-align: center;
 } 
+

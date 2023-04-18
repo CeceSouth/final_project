@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import Painting from '../Painting';
 import './index.css';
 
-
-
-
 function Gallery() {
   const [paintingIDs, setPaintingIDs] = useState()
   const [loadMore, setLoadMore] = useState(0)
@@ -17,7 +14,6 @@ function Gallery() {
     .then(res => res.json())
     .then((ids) => {
       setPaintingIDs(ids)
-      
     })
     .catch((err) => console.log(err))
       
@@ -37,15 +33,14 @@ function Gallery() {
           setViewPaintings((prevState) => ({...prevState, [id]: painting}))
           setLike((prevState) => ({...prevState, [id]: false}))
         })
-        .catch((err) => console.log(err))
-
-      //setLoadMore(loadMore+11)
-      
-    )
+        .catch((err) => console.log(err))      
+      )
     }
   }, [paintingIDs, loadMore])
 
-  console.log(like)
+  function loadMorePaintings() {
+    setLoadMore(loadMore+11)
+  }
 
   return (
     <div className="App">
@@ -56,7 +51,6 @@ function Gallery() {
         {(!viewPaintings) ? <h1>Loading</h1> : 
           Object.keys(viewPaintings).map((id) => {
 
-            
             return(<Painting 
               key = {id}
               paintingID = {id}
@@ -68,6 +62,7 @@ function Gallery() {
 
         }
       </div>
+      <button onClick={()=>loadMorePaintings()}>Load More</button>
     </div>
     
   );
