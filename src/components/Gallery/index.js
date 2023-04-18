@@ -44,8 +44,7 @@ function Gallery() {
 
   return (
     <div className="App">
-      <p>Gallery</p>
-
+      <p className='introduction'>Religion painting show of the medieval Europe </p>
       <div className="paintings">
         
         {(!viewPaintings) ? <h1>Loading</h1> : 
