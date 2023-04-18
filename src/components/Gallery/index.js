@@ -8,9 +8,8 @@ import './index.css';
 function Gallery() {
   const [paintingIDs, setPaintingIDs] = useState()
   const [loadMore, setLoadMore] = useState(0)
-  const [displayPaintingIDs, setDisplayPaintingIDs] = useState()
   const [viewPaintings, setViewPaintings] = useState()
-  const [like, setLike] = useState(false)
+  const [like, setLike] = useState()
   
   useEffect(() => {
     // Get paintingIDs from API
@@ -18,9 +17,11 @@ function Gallery() {
     .then(res => res.json())
     .then((ids) => {
       setPaintingIDs(ids)
+      
     })
     .catch((err) => console.log(err))
-
+      
+    
   }, [])
 
   // Get details of the paintings such as title and image.
@@ -32,16 +33,19 @@ function Gallery() {
       paintings.forEach((id) => 
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
         .then(res => res.json())
-        .then((painting) => setViewPaintings((prevState) => ({...prevState, [id]: painting}))
-
-        )
+        .then((painting) => {
+          setViewPaintings((prevState) => ({...prevState, [id]: painting}))
+          setLike((prevState) => ({...prevState, [id]: false}))
+        })
+        .catch((err) => console.log(err))
 
       //setLoadMore(loadMore+11)
+      
     )
     }
   }, [paintingIDs, loadMore])
 
-  
+  console.log(like)
 
   return (
     <div className="App">
@@ -50,12 +54,14 @@ function Gallery() {
       <div className="paintings">
         
         {(!viewPaintings) ? <h1>Loading</h1> : 
-          Object.keys(viewPaintings).map((painting) => {
+          Object.keys(viewPaintings).map((id) => {
+
+            
             return(<Painting 
-              key = {painting}
-              paintingID = {painting}
-              painting = {viewPaintings[painting]}
-              like = {like}
+              key = {id}
+              paintingID = {id}
+              painting = {viewPaintings[id]}
+              like = {like[id]}
               setLike = {setLike}
             />)
           })
