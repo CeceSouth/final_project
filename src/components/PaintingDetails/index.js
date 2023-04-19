@@ -2,8 +2,9 @@ import { useLocation } from "react-router-dom";
 import "./index.css"
 
 function PaintingDetails(props) {
-    
+
     const location = useLocation()
+    
     return(
         <>
              <img className="detailsPainting"

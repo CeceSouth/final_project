@@ -25,7 +25,7 @@ function Gallery() {
   useEffect(()=> {
     
     if (paintingIDs) {
-      const paintings = paintingIDs.objectIDs.slice(loadMore, loadMore+12)
+      const paintings = paintingIDs.objectIDs.slice(loadMore, loadMore+11)
       console.log(paintings)
       let newPaintings = [...viewPaintings]
       
@@ -53,8 +53,10 @@ function Gallery() {
       <p className='introduction'>Religion painting show of the medieval Europe </p>
       <div className="paintings">
         
+        
         {(!viewPaintings) ? <h1>Loading</h1> : 
           Object.keys(viewPaintings).map((id) => {
+            console.log(viewPaintings[id].objectID)
             return(<Painting 
               key = {viewPaintings[id].objectID}
               paintingID = {viewPaintings[id].objectID}

@@ -20,7 +20,7 @@ function Painting(props) {
                             />
 
                                 <Link className="linkButton" 
-                                    state={props.painting} to={props.paintingID}>Details
+                                    state={props.painting} to={"/gallery/" + props.painting.objectID}>Details
                                 </Link>
                             </div> 
                                 
