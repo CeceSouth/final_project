@@ -17,7 +17,7 @@ function Gallery() {
     })
     .catch((err) => console.log(err))
       
-    
+    // setPaintingIDs((prevState) => console.log(typeof(prevState))])
   }, [])
 
   // Get details of the paintings such as title and image.
@@ -41,6 +41,7 @@ function Gallery() {
   function loadMorePaintings() {
     setLoadMore(loadMore+11)
   }
+  console.log(viewPaintings)
 
   return (
     <div className="App">
