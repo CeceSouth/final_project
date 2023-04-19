@@ -26,7 +26,6 @@ function Gallery() {
     
     if (paintingIDs) {
       const paintings = paintingIDs.objectIDs.slice(loadMore, loadMore+11)
-      console.log(paintings)
       let newPaintings = [...viewPaintings]
       
       paintings.forEach((id) => 
@@ -45,7 +44,7 @@ function Gallery() {
   }, [paintingIDs, loadMore])
 
   function loadMorePaintings() {
-    setLoadMore(loadMore+12)
+    setLoadMore(loadMore+11)
   }
 
   return (
@@ -56,7 +55,7 @@ function Gallery() {
         
         {(!viewPaintings) ? <h1>Loading</h1> : 
           Object.keys(viewPaintings).map((id) => {
-            console.log(viewPaintings[id].objectID)
+            // console.log(viewPaintings[id].objectID)
             return(<Painting 
               key = {viewPaintings[id].objectID}
               paintingID = {viewPaintings[id].objectID}
