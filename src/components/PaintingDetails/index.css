@@ -8,3 +8,7 @@
     left:50%;
     width: 400px;
 }
+
+.detailsPainting:hover{
+    width: 500px;
+}
