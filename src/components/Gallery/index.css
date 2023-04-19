@@ -4,10 +4,11 @@
 
 .paintings {
     justify-content: center;
-    text-align: center;
+    /* text-align: center; */
     display: flex;
-    position: relative;
+    /* position: relative; */
     flex-wrap: wrap;
+    /* flex-grow: 2; */
 } 
 .introduction{
     font-size: 30px;
