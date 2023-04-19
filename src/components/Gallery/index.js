@@ -5,7 +5,7 @@ import './index.css';
 function Gallery() {
   const [paintingIDs, setPaintingIDs] = useState()
   const [loadMore, setLoadMore] = useState(0)
-  const [viewPaintings, setViewPaintings] = useState()
+  const [viewPaintings, setViewPaintings] = useState([])
   const [like, setLike] = useState()
   
   useEffect(() => {
@@ -17,20 +17,26 @@ function Gallery() {
     })
     .catch((err) => console.log(err))
       
-    // setPaintingIDs((prevState) => console.log(typeof(prevState))])
+    
   }, [])
+
 
   // Get details of the paintings such as title and image.
   useEffect(()=> {
     
     if (paintingIDs) {
-      const paintings = paintingIDs.objectIDs.slice(loadMore, loadMore+11)
+      const paintings = paintingIDs.objectIDs.slice(loadMore, loadMore+12)
+      console.log(paintings)
+      let newPaintings = [...viewPaintings]
       
       paintings.forEach((id) => 
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
         .then(res => res.json())
         .then((painting) => {
-          setViewPaintings((prevState) => ({...prevState, [id]: painting}))
+          
+          newPaintings.push(painting)
+          setViewPaintings(newPaintings)
+          // setViewPaintings((prevState) => ({...prevState, [id]: painting}))
           setLike((prevState) => ({...prevState, [id]: false}))
         })
         .catch((err) => console.log(err))      
@@ -39,9 +45,8 @@ function Gallery() {
   }, [paintingIDs, loadMore])
 
   function loadMorePaintings() {
-    setLoadMore(loadMore+11)
+    setLoadMore(loadMore+12)
   }
-  console.log(viewPaintings)
 
   return (
     <div className="App">
@@ -50,12 +55,11 @@ function Gallery() {
         
         {(!viewPaintings) ? <h1>Loading</h1> : 
           Object.keys(viewPaintings).map((id) => {
-
             return(<Painting 
-              key = {id}
-              paintingID = {id}
+              key = {viewPaintings[id].objectID}
+              paintingID = {viewPaintings[id].objectID}
               painting = {viewPaintings[id]}
-              like = {like[id]}
+              like = {like[viewPaintings[id].objectID]}
               setLike = {setLike}
             />)
           })

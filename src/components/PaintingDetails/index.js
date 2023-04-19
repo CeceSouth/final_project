@@ -4,8 +4,6 @@ import "./index.css"
 function PaintingDetails(props) {
     
     const location = useLocation()
-    console.log(location)
-    console.log(location.state)
     return(
         <>
              <img className="detailsPainting"
